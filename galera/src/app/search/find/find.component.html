@@ -1,0 +1,40 @@
+<div class="col-md-12">
+  <h1>Book service</h1>
+</div>
+
+
+<br>
+
+<div class="col-md-6">
+    <input type="text" class="form-control" #inputSearch>
+</div>
+<div class="col-md-6">
+  <button class="btn btn-primary" (click)="findBooks(inputSearch.value)">Find books</button>
+  <button class="btn btn-success" (click)="showBooks()">Show books</button>
+</div>
+
+<div class="clearfix"></div>
+
+<hr>
+<div class="col-md-7">
+  <h2>Search list books</h2>
+  <ul class="list-group">
+    <li class="list-group-item" *ngFor="let book of listBooks">{{book.volumeInfo.title}}
+      <!--<button class="btn btn-danger pull-right" (click)="deleteBook(book.id)">Delete book</button>-->
+      <button class="btn btn-success pull-right" (click)="addBook(book)">Add book</button>
+      <div class="clearfix"></div>
+    </li>
+  </ul>
+</div>
+
+
+
+<div class="col-md-5">
+  <h2>My list Books</h2>
+  <ul class="list-group">
+    <li class="list-group-item" *ngFor="let book of listLocalBooks">{{book.volumeInfo.title}}
+      <button class="btn btn-danger pull-right" (click)="deleteBook(book.id)">Delete book</button>
+    </li>
+  </ul>
+</div>
+
