@@ -14,4 +14,8 @@
   margin-left: 15px;
 }
 
+.danger {
+  background: rgba(255, 0, 0, 0.15);
+}
+
 

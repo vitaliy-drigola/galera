@@ -6,11 +6,11 @@
 <br>
 
 <div class="col-md-6">
-    <input type="text" class="form-control" #inputSearch>
+    <input type="text" class="form-control" (keyup.enter)="findBooks(inputSearch.value)" #inputSearch>
 </div>
 <div class="col-md-6">
-  <button class="btn btn-primary" (click)="findBooks(inputSearch.value)">Find books</button>
-  <button class="btn btn-success" (click)="showBooks()">Show books</button>
+  <button class="btn btn-primary" (click)="findBooks(inputSearch.value)" >Find books</button>
+  <!--<button class="btn btn-success" (click)="showBooks()">Show books</button>-->
 </div>
 
 <div class="clearfix"></div>
@@ -19,9 +19,9 @@
 <div class="col-md-7">
   <h2>Search list books</h2>
   <ul class="list-group">
-    <li class="list-group-item" *ngFor="let book of listBooks">{{book.volumeInfo.title}}
+    <li class="list-group-item" [ngClass]="{danger:book.isActiveButton}" *ngFor="let book of listBooks">{{book.volumeInfo.title}}
       <!--<button class="btn btn-danger pull-right" (click)="deleteBook(book.id)">Delete book</button>-->
-      <button class="btn btn-success pull-right" (click)="addBook(book)">Add book</button>
+      <button class="btn btn-success pull-right" (click)="addBook(book)" [disabled]="book.isActiveButton">Add book</button>
       <div class="clearfix"></div>
     </li>
   </ul>
@@ -33,7 +33,7 @@
   <h2>My list Books</h2>
   <ul class="list-group">
     <li class="list-group-item" *ngFor="let book of listLocalBooks">{{book.volumeInfo.title}}
-      <button class="btn btn-danger pull-right" (click)="deleteBook(book.id)">Delete book</button>
+      <button class="btn btn-danger pull-right" (click)="deleteBook(book)">Delete book</button>
     </li>
   </ul>
 </div>
